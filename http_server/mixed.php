@@ -35,6 +35,7 @@ $backlog = (int) (getenv('SERVER_BACKLOG') ?: Socket::DEFAULT_BACKLOG);
 
 $server = new Server();
 $server->bind($host, $port)->listen($backlog);
+echo "Server started at http://{$host}:{$port}\n";
 while (true) {
     try {
         $connection = null;
