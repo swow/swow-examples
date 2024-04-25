@@ -30,7 +30,7 @@ while (true) {
                 if ($length === 0) {
                     break;
                 }
-                echo "No.{$connection->getFd()} say: \"" . addcslashes($buffer->toString(), "\r\n") . '"' . PHP_EOL;
+                echo "No.{$connection->getFd()} say: \"" . addcslashes($buffer->read(length: $length), "\r\n") . '"' . PHP_EOL;
                 $connection->send($buffer);
             }
             echo "No.{$connection->getFd()} closed" . PHP_EOL;
