@@ -1,4 +1,15 @@
 <?php
+/**
+ * This file is part of Swow
+ *
+ * @link    https://github.com/swow/swow
+ * @contact twosee <twosee@php.net>
+ *
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code
+ */
+
+declare(strict_types=1);
 
 use Swow\Psr7\Message\ServerRequest as HttpRequest;
 use Swow\Psr7\Server\EventDriver;
@@ -9,7 +20,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 function sprintfWithConnection(ServerConnection $connection, string $format, ...$args): string
 {
-    /** @noinspection PhpFormatFunctionParametersMismatchInspection */
+    /* @noinspection PhpFormatFunctionParametersMismatchInspection */
     return sprintf("[%s] <%s:%d> {$format}", date('Y-m-d H:i:s'), $connection->getPeerAddress(), $connection->getPeerPort(), ...$args);
 }
 
