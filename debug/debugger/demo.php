@@ -19,7 +19,12 @@ use Swow\Debug\Debugger\Debugger;
 
 use function Swow\Sync\waitAll;
 
-Debugger::runOnTTY();
+if (filter_var(getenv('RUN_ON_EOF_STREAM'), FILTER_VALIDATE_BOOL)) {
+    echo "> telnet 127.0.0.1 33284\n";
+    Debugger::runOnEofStream();
+} else {
+    Debugger::runOnTTY();
+}
 
 for ($n = 1; $n <= 3; $n++) {
     Coroutine::run(static function () use ($n): void {
